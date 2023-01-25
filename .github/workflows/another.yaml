@@ -13,6 +13,11 @@ jobs:
         run: |
           pwd
           ls -la
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo
+          printenv
       - name: simple js action
         id: greet
         uses: actions/hello-world-javascript-action@v1

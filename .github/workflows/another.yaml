@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: list
+        run : |
+          printenv
+          
       - name: Push a random file
         run: |
           echo Starting

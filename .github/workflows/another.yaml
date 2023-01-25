@@ -1,43 +1,41 @@
 name: CI
 
 on:
-  pull_request:
-    branches: [main]
+  push:
+  # pull_request:
+  #   branches: [main]
   
 jobs:
-  add-random-file:
+  # JOB to run change detection
+  changes:
     runs-on: ubuntu-latest
-
+    # Required permissions
+    permissions:
+      pull-requests: read
+    outputs:
+      # Expose matched filters as job 'packages' output variable
+      packages: ${{ steps.filter.outputs.changes }}
     steps:
-      - name: list
-        run : |
-          printenv
+    # For pull requests it's not necessary to checkout the code
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          package1: p1/**
+          package2: p2/**
+          package3: p3/**
+          package4: p3/**
 
-      - name: Push a random file
-        run: |
-          echo Starting
-          pwd
-          ls -la
-          echo
-          echo Gitting
-          git init
-          git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
-
-          git config --global user.email "my-bot@bot.com"
-          git config --global user.name "my-bot"
-
-          git fetch
-          git checkout $GITHUB_HEAD_REF
-          git branch --set-upstream-to=origin/$GITHUB_HEAD_REF
-
-          git pull
-          ls -la
-
-          echo $RANDOM >> random.txt
-
-          git add -A
-          git commit -m "update"
-          git push
-
-
+  # JOB to build and test each of modified packages
+  build:
+    needs: changes
+    strategy:
+      matrix:
+        # Parse JSON array containing names of all filters matching any of changed files
+        # e.g. ['package1', 'package2'] if both package folders contains changes
+        package: ${{ fromJSON(needs.changes.outputs.packages) }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "here"
 

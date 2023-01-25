@@ -20,8 +20,8 @@ jobs:
       id: filter
       with:
         filters: |
-          package1: p1/**
-          package2: p2/**
+          services/p1: p1/**
+          services/p2: p2/**
           package3: p3/**
           package4: p3/**
 
@@ -36,5 +36,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: echo ${{ matrix.package }} ; pwd
+      - run: echo ${{ matrix.package }} ; pwd ; cd ${{ matrix.package }}
+      - run: echo show ; ls
 

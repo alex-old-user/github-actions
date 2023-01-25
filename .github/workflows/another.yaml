@@ -20,7 +20,7 @@ jobs:
       id: filter
       with:
         filters: |
-          package1: p1/**
+          services/: p1/**
           package2: p2/**
           package3: p3/**
           package4: p3/**

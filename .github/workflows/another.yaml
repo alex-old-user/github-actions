@@ -12,7 +12,7 @@ jobs:
       - name: list
         run : |
           printenv
-          
+
       - name: Push a random file
         run: |
           echo Starting
@@ -27,8 +27,8 @@ jobs:
           git config --global user.name "my-bot"
 
           git fetch
-          git checkout main
-          git branch --set-upstream-to=origin/main
+          git checkout GITHUB_HEAD_REF
+          git branch --set-upstream-to=origin/GITHUB_HEAD_REF
 
           git pull
           ls -la

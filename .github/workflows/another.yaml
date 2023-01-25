@@ -1,28 +1,39 @@
-name: Actions Workflow
+name: CI
 
-on: [push, pull_request]
-
+on:
+  pull_request:
+    branches: [master]
+  
 jobs:
-  run-github-actions:
+  add-random-file:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: List files
+      - name: Push a random file
         run: |
+          echo Starting
           pwd
           ls -la
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
-          echo $GITHUB_WORKSPACE
-          echo "${{ github.token }}"
           echo
-          printenv
-      - name: simple js action
-        id: greet
-        uses: actions/hello-world-javascript-action@v1
-        with:
-          who-to-greet: alex
-      - name: log greeting time
-        run: echo "${{ steps.greet.outputs.time }}"
+          echo Gitting
+          git init
+          git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
+
+          git config --global user.email "my-bot@bot.com"
+          git config --global user.name "my-bot"
+
+          git fetch
+          git checkout master
+          git branch --set-upstream-to=origin/master
+
+          git pull
+          ls -la
+
+          echo $RANDOM >> random.txt
+
+          git add -A
+          git commit -m "update"
+          git push
+
+
+

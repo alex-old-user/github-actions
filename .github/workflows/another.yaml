@@ -52,6 +52,6 @@ jobs:
       - name: build-push
         uses: docker/build-push-action@v3
         with:
-          tags: fra.ocir.io/fr3hx7l7h3p9/simple
+          tags: fra.ocir.io/fr3hx7l7h3p9/${{ matrix.package }}
           push: true
           file: ${{ matrix.package }}/Dockerfile

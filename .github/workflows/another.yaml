@@ -60,21 +60,21 @@ jobs:
         uses: fjogeleit/yaml-update-action@main
         with:
           valueFile: '${{ matrix.package }}/deployment.yaml'
-          propertyPath: 'backend.version'
-          value: v12.0.12
-          commitChange: false
+          propertyPath: 'image'
+          value: yes
+          commitChange: true
 
-  commit:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      #- uses: actions/checkout@v2
-      - name: bump image tag
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -am "bump image tag"
-          git push
+  # commit:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     #- uses: actions/checkout@v2
+  #     - name: bump image tag
+  #       run: |
+  #         git config --global user.name 'github-actions[bot]'
+  #         git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+  #         git commit -am "bump image tag"
+  #         git push
 
 
 # jobs:

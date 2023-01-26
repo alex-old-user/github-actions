@@ -8,6 +8,7 @@ jobs:
   test-update-file:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - run: cat values.yaml ; echo
       - uses: actions/checkout@v3
       - name: Update values.yaml

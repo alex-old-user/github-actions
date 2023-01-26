@@ -63,7 +63,7 @@ jobs:
           propertyPath: 'image'
           value: "yes"
           commitChange: true
-          branch: "$GITHUB_HEAD_REF"
+          branch: ${{ github.head_ref }}
 
   # commit:
   #   needs: build

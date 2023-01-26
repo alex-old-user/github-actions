@@ -14,7 +14,7 @@ jobs:
       - name: Update values.yaml
         uses: fjogeleit/yaml-update-action@main
         with:
-          valueFile: 'file.yaml'
+          valueFile: 'values.yaml'
           propertyPath: 'file.version'
           value: v11.0.11
           commitChange: false

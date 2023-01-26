@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: cat values.yaml ; echo
+      - run: cat values.yaml ; echo ; printenv
       - uses: actions/checkout@v3
       - name: Update values.yaml
         uses: fjogeleit/yaml-update-action@main

@@ -37,7 +37,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo ${{ matrix.package }} ; pwd ; cd ${{ matrix.package }}
-      - run: echo show ; ls
+      - run: printenv
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2

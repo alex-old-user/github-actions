@@ -61,9 +61,10 @@ jobs:
         with:
           valueFile: '${{ matrix.package }}/deployment.yaml'
           propertyPath: 'image'
-          value: "yes"
+          value: "$GITHUB_SHA"
           commitChange: true
           branch: ${{ github.head_ref }}
+          message: "bump image version"
 
   # commit:
   #   needs: build

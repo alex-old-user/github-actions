@@ -55,6 +55,14 @@ jobs:
           tags: fra.ocir.io/fr3hx7l7h3p9/${{ matrix.package }}
           push: true
           file: ${{ matrix.package }}/Dockerfile
+  
+      - name: Update values.yaml
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          valueFile: '${{ matrix.package }}/deployment.yaml'
+          propertyPath: 'backend.version'
+          value: v12.0.12
+          commitChange: false
 
   commit:
     needs: build
@@ -67,3 +75,27 @@ jobs:
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -am "bump image tag"
           git push
+
+
+# jobs:
+#   test-update-file:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - run: cat values.yaml ; echo ; printenv
+#       - uses: actions/checkout@v3
+#       - name: Update values.yaml
+#         uses: fjogeleit/yaml-update-action@main
+#         with:
+#           valueFile: 'values.yaml'
+#           propertyPath: 'backend.version'
+#           value: v12.0.12
+#           commitChange: false
+#       - run: cat values.yaml ; echo
+
+#       - name: Commit changes
+#         run: |
+#           git config --global user.name 'BB-8'
+#           git config --global user.email 'BB-8@weka.io'
+#           git commit -am "Automated report"
+#           git push

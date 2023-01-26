@@ -1,1 +1,1 @@
-image: $GITHUB_SHA
+image: ${GITHUB_SHA}

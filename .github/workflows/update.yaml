@@ -16,13 +16,13 @@ jobs:
         with:
           valueFile: 'values.yaml'
           propertyPath: 'backend.version'
-          value: v11.0.11
+          value: v12.0.12
           commitChange: false
       - run: cat values.yaml ; echo
 
       - name: Commit changes
         run: |
           git config --global user.name 'BB-8'
-          git config --global user.email 'BB-8@users.noreply.github.com'
+          git config --global user.email 'BB-8@weka.io'
           git commit -am "Automated report"
           git push

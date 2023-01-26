@@ -15,7 +15,7 @@ jobs:
         uses: fjogeleit/yaml-update-action@main
         with:
           valueFile: 'values.yaml'
-          propertyPath: 'file.version'
+          propertyPath: 'backend.version'
           value: v11.0.11
           commitChange: false
       - run: cat values.yaml ; echo

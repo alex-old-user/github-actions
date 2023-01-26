@@ -1,1 +1,1 @@
-image: 'yes'
+image: $GITHUB_SHA

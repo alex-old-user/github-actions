@@ -1,0 +1,20 @@
+name: 'workflow'
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-update-file:
+    runs-on: ubuntu-latest
+    steps:
+      - run: cat values.yaml ; echo
+      - uses: actions/checkout@v3
+      - name: Update values.yaml
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          valueFile: 'file.yaml'
+          propertyPath: 'file.version'
+          value: v11.0.11
+          commitChange: false
+      - run: cat values.yaml ; echo

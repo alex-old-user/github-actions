@@ -19,3 +19,10 @@ jobs:
           value: v11.0.11
           commitChange: false
       - run: cat values.yaml ; echo
+
+      - name: Commit changes
+        run: |
+          git config --global user.name 'BB-8'
+          git config --global user.email 'BB-8@users.noreply.github.com'
+          git commit -am "Automated report"
+          git push

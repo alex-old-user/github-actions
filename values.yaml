@@ -1,5 +1,5 @@
 backend:
-  version: v11.0.11
+  version: v12.0.12
 frontend: {}
 containers:
   - name: nginx

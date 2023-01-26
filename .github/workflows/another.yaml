@@ -57,7 +57,7 @@ jobs:
           file: ${{ matrix.package }}/Dockerfile
   
       - name: Update values.yaml
-        uses: fjogeleit/yaml-update-action@main
+        uses: fjogeleit/yaml-update-action@v0.12.3
         with:
           valueFile: '${{ matrix.package }}/deployment.yaml'
           propertyPath: 'image'

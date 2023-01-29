@@ -46,13 +46,13 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           path: tmp
-          
-      - run: |
-          cd tmp
-          for FILE in *; do mv $FILE ../services/$FILE/file ; done
-          cd .. && rm tmp
+      - run: ls tmp/p1          
+      # - run: |
+      #     cd tmp
+      #     for FILE in *; do mv $FILE ../services/$FILE/file ; done
+      #     cd .. && rm tmp
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Bump image version
+      # - uses: stefanzweifel/git-auto-commit-action@v4
+      #   with:
+      #     commit_message: Bump image version
   

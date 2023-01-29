@@ -22,20 +22,31 @@ jobs:
         filters: |
           services/p1: p1/**
           services/p2: p2/**
-          package3: p3/**
-          package4: p3/**
 
-  # JOB to build and test each of modified packages
   build:
     needs: changes
     strategy:
       matrix:
-        # Parse JSON array containing names of all filters matching any of changed files
-        # e.g. ['package1', 'package2'] if both package folders contains changes
         package: ${{ fromJSON(needs.changes.outputs.packages) }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: echo ${{ matrix.package }} ; pwd ; cd ${{ matrix.package }}
-      - run: echo show ; ls
+      - run: echo pull > ${{ matrix.package }}/file
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.package }}/file
+          path: ${{ matrix.package }}/file
 
+
+  commit:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          path: path/to/artifacts
+    
+      - run: ls
+      - run: cat services/p2/file
+      # - uses: stefanzweifel/git-auto-commit-action@v4

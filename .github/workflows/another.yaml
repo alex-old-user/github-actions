@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [main]
     paths-ignore:
-      - 'services/*/manifests'
+      - 'services/*/manifests/**'
 jobs:
   # JOB to run change detection
   changes:

@@ -11,6 +11,7 @@ jobs:
       - run: pwd ; echo 1  > file1 ; ls
 
   test-update-file2:
+    needs: test-update-file
     runs-on: ubuntu-latest
     steps:
       - run: pwd ; ls

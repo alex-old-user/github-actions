@@ -20,8 +20,8 @@ jobs:
       id: filter
       with:
         filters: |
-          services/p1: services/p1/**
-          services/p2: services/p1/**
+          p1: services/p1/**
+          p2: services/p1/**
 
   build:
     needs: changes
@@ -35,8 +35,8 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: services
-          path: services
+          name: p1
+          path: services/${{ matrix.package }}/file
 
   commit:
     needs: build
@@ -45,11 +45,5 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/download-artifact@v3
         with:
-          name: services
-          path: services
-    
-      - run: ls services
-      - run: cat services/p2/file
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Bump image version
+          path: tmp
+      - run: ls tmp

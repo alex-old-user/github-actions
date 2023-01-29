@@ -20,8 +20,8 @@ jobs:
       id: filter
       with:
         filters: |
-          services/p1: p1/**
-          services/p2: p2/**
+          services/p1: services/p1/**
+          services/p2: services/p1/**
 
   build:
     needs: changes

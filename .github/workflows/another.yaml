@@ -53,12 +53,13 @@ jobs:
           popd && rm -rf tmp
 
       - uses: stefanzweifel/git-auto-commit-action@v4
+        id: push
         with:
           commit_message: Bump image version
       - name: Set final commit status
         uses: myrotvorets/set-commit-status-action@master
         if: always()
         with:
-          sha: ${{ steps.comment-branch.outputs.head_sha }}
+          sha: ${{ steps.push.outputs.commit_hash }}
           token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}

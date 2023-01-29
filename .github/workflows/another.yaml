@@ -62,5 +62,4 @@ jobs:
         with:
           sha: ${{ steps.push.outputs.commit_hash }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          context: Publish NPM package
           status: ${{ job.status }}

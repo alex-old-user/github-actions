@@ -55,5 +55,7 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Bump image version
-      - uses: ouzi-dev/commit-status-updater@v2
-  
+      - uses: jzweifel/pr-status-giphy-action@master
+        env:
+          GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

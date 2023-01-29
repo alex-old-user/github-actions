@@ -48,11 +48,12 @@ jobs:
           path: tmp
       # - run: ls tmp/p1          
       - run: |
-          cd tmp
+          pushd tmp
           for FILE in *; do mv $FILE/file ../services/$FILE/file ; done
-          cd .. && rm -rf tmp
+          popd && rmdir tmp
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Bump image version
+      - uses: ouzi-dev/commit-status-updater@v2
   

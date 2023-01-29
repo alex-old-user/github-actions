@@ -37,9 +37,6 @@ jobs:
         with:
           name: services
           path: services
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Bump image version
 
   commit:
     needs: build

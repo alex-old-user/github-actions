@@ -50,7 +50,7 @@ jobs:
       - run: |
           pushd tmp
           for FILE in *; do mv $FILE/file ../services/$FILE/file ; done
-          popd && rmdir tmp
+          popd && rm -rf tmp
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:

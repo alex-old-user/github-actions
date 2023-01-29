@@ -48,7 +48,7 @@ jobs:
           name: services
           path: services
     
-      - run: ls
+      - run: ls services
       - run: cat services/p2/file
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:

@@ -3,7 +3,8 @@ name: CI
 on:
   pull_request:
     branches: [main]
-  
+    paths-ignore:
+      - 'services/*/manifests'
 jobs:
   # JOB to run change detection
   changes:

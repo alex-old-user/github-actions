@@ -6,12 +6,23 @@ on:
     paths-ignore:
       - 'services/*/manifests/**'
       - 'services/*/skaffold.yaml'
+      - 'services/*/Taskfile.yaml'
       - 'services/*/README.md'
       - 'flux/**'
       - 'helpers/**'
       - '*'
 jobs:
-  # JOB to run change detection
+
+
+  pRStatusGiphy:
+    name: PR Status Giphy
+    runs-on: ubuntu-latest
+    steps:
+    - name: PR Status Giphy
+      uses: jzweifel/pr-status-giphy-action@master
+      env:
+        GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   changes:
     runs-on: ubuntu-latest
     # Required permissions
@@ -61,7 +72,7 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         id: push
         with:
-          commit_message: Bump image version
+          commit_message: bump image version
       - name: Set final commit status
         uses: myrotvorets/set-commit-status-action@master
         if: always()

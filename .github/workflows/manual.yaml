@@ -1,5 +1,6 @@
 name: tf
 
+on:
   workflod_dispatch:
     inputs:
       logLevel

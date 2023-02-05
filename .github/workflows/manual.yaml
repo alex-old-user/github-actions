@@ -1,10 +1,11 @@
-name: tf
+name: TF
 
-on:
+on: 
   workflow_dispatch:
     inputs:
       logLevel:
-	description: "Log level"
-	required: true
-      action:
-	description: "action to apply"	
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'

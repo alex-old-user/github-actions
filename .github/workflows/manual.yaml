@@ -1,0 +1,9 @@
+name: tf
+
+  workflod_dispatch:
+    inputs:
+      logLevel
+	description: "Log level"
+	required: true
+      action:
+	description: "action to apply"	

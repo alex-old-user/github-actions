@@ -8,6 +8,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
     - name: "Build Changelog"
       id: build_changelog
       uses: mikepenz/release-changelog-builder-action@v3
+    - run: echo ${{steps.build_changelog.outputs.changelog}}

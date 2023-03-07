@@ -26,7 +26,7 @@ jobs:
         run: |
           rm -rf .cr-release-packages
           mkdir -p .cr-release-packages
-          helm package deploy --app-version=${TAG:1} --version=${TAG:1} --destination .cr-release-packages
+          helm package deploy/aloha --app-version=${TAG:1} --version=${TAG:1} --destination .cr-release-packages
         env:
           TAG: ${{ github.event.inputs.releaseTag }}
 

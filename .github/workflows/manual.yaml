@@ -52,7 +52,6 @@ jobs:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
           skip_packaging: true
-          version: "1.2.5"
 
         
 

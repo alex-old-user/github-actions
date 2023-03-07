@@ -63,4 +63,5 @@ jobs:
           files: test
           tag_name: ${{ github.event.inputs.releaseTag }}
           generate_release_notes: true
+          append_body: true
           #body: ${{steps.github_release.outputs.changelog}}

@@ -52,7 +52,7 @@ jobs:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
           skip_packaging: true
-          version: ${{ github.event.inputs.releaseTag }}
+          version: "1.2.5"
 
         
 

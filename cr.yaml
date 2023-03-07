@@ -1,1 +1,1 @@
-release-name-template: "test-{{ .Version }}"
+release-name-template: "{{ .Version }}"

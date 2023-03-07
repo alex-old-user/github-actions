@@ -23,10 +23,11 @@ jobs:
           version: 3.11.1
 
       - uses: helm/chart-releaser-action@v1
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
           charts_dir: deploy
-        # env:
-        #   CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
         
 
 

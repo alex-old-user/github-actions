@@ -33,6 +33,7 @@ jobs:
           rm -rf .cr-release-packages
           mkdir -p .cr-release-packages
           helm package charts/aloha --app-version=${TAG:1} --version=${TAG:1} --destination .cr-release-packages
+          mv .cr-release-packages/aloha*  .cr-release-packages/${TAG:1}.tgz 
         env:
           TAG: ${{ github.event.inputs.releaseTag }}
 

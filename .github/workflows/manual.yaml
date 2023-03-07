@@ -37,6 +37,7 @@ jobs:
             echo $owner
             echo $repo
             echo ${TAG:1}
+            git remote get-url --all origin
         env:
           TAG: ${{ github.event.inputs.releaseTag }}
 

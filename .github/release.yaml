@@ -4,11 +4,17 @@ changelog:
     - title: Breaking Changes 🛠
       labels:
         - Semver-Major
-        - breaking-change
-    - title: Exciting New Features 🎉
+        - breaking
+    - title: New Features 🎉
       labels:
         - Semver-Minor
         - enhancement
+        - feature
+    - title: Fixes 🐛
+      labels:
+        - Semver-Patch
+        - fix
+        - bug
     - title: Other Changes
       labels:
         - "*"

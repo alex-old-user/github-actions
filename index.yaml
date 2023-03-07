@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   aloha:
   - apiVersion: v2
+    appVersion: 1.2.16
+    created: "2023-03-07T19:03:16.032608605Z"
+    description: A Helm chart for Kubernetes
+    digest: 4695581ab9be6dac2e0f3d6decec3174c2427ddce2cd1a62809aae620c9805cc
+    name: aloha
+    type: application
+    urls:
+    - https://github.com/dontbreakit/github-actions/releases/download/v1.2.16/aloha-1.2.16.tgz
+    version: 1.2.16
+  - apiVersion: v2
     appVersion: 1.2.15
     created: "2023-03-07T18:59:40.185536838Z"
     description: A Helm chart for Kubernetes
@@ -91,4 +101,4 @@ entries:
     urls:
     - https://github.com/dontbreakit/github-actions/releases/download/aloha-1.2.5/aloha-1.2.5.tgz
     version: 1.2.5
-generated: "2023-03-07T18:59:40.185563638Z"
+generated: "2023-03-07T19:03:16.032743714Z"

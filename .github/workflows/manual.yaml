@@ -26,4 +26,5 @@ jobs:
           draft: true
           files: test
           tag_name: ${{ github.event.inputs.releaseTag }}
-          body: ${{steps.github_release.outputs.changelog}}
+          generate_release_notes: true
+          #body: ${{steps.github_release.outputs.changelog}}

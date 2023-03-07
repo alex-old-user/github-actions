@@ -4,6 +4,7 @@
 - archived, only realease https://github.com/actions/create-release
 - archived, upload release assets https://github.com/actions/upload-release-asset
 - replacment for both above https://github.com/softprops/action-gh-release
+- https://github.com/marketplace/actions/release-notes-generator
 
 **others**
 - https://github.com/marketplace/actions/create-pull-request

@@ -36,6 +36,7 @@ jobs:
     
       - name: helm package
         run: |
+          helm-docs
           helm package charts/aloha --app-version=$TAG --version=$TAG --destination .cr-release-packages 
         env:
           TAG: ${{ steps.version.outputs.version }}

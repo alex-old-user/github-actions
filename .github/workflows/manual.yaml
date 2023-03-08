@@ -19,6 +19,7 @@ jobs:
         run: |
           version=`yq .version charts/aloha/Chart.yaml`
           echo $version
+          echo "version=$version" >> "$GITHUB_OUTPUT"
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
@@ -36,9 +37,10 @@ jobs:
         run: |
           rm -rf .cr-release-packages
           mkdir -p .cr-release-packages
-          helm package charts/aloha --app-version=${TAG:1} --version=${TAG:1} --destination .cr-release-packages 
+          helm package charts/aloha --app-version=${TAG} --version=${TAG} --destination .cr-release-packages 
         env:
-          TAG: ${{ github.event.inputs.releaseTag }}
+          TAG: ${{ steps.version.outputs.version }}
+          #TAG: ${{ github.event.inputs.releaseTag }}
 
       - run: |
             owner=$(cut -d '/' -f 1 <<< "$GITHUB_REPOSITORY")

@@ -25,3 +25,11 @@ on PR to master
 - generate helm-docs
 
 on push to master
+
+https://artifacthub.io/docs/topics/annotations/helm/
+how to sign package
+https://helm.sh/docs/topics/provenance/
+
+https://artifacthub.io/packages/helm/prometheus-community/prometheus
+https://artifacthub.io/packages/helm/csi-wekafs/csi-wekafsplugin
+artifacthub-repo.yml

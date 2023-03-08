@@ -15,16 +15,17 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - id: version
+      - name: get version
+        id: version
         run: |
           version=`yq .version charts/aloha/Chart.yaml`
           echo $version
           echo "version=$version" >> "$GITHUB_OUTPUT"
-      - name: Configure Git
-        run: |
-          git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-      - run: git log -5
+      # - name: Configure Git
+      #   run: |
+      #     git config user.name "$GITHUB_ACTOR"
+      #     git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      # - run: git log -5
       # - name: Build Changelog
       #   id: github_release
       #   uses: mikepenz/release-changelog-builder-action@v3
@@ -40,16 +41,16 @@ jobs:
           TAG: ${{ steps.version.outputs.version }}
           #TAG: ${{ github.event.inputs.releaseTag }}
 
-      - run: |
-            owner=$(cut -d '/' -f 1 <<< "$GITHUB_REPOSITORY")
-            repo=$(cut -d '/' -f 2 <<< "$GITHUB_REPOSITORY")
-            echo here
-            echo $owner
-            echo $repo
-            echo ${TAG:1}
-            git remote get-url --all origin
-        env:
-          TAG: ${{ github.event.inputs.releaseTag }}
+      # - run: |
+      #       owner=$(cut -d '/' -f 1 <<< "$GITHUB_REPOSITORY")
+      #       repo=$(cut -d '/' -f 2 <<< "$GITHUB_REPOSITORY")
+      #       echo here
+      #       echo $owner
+      #       echo $repo
+      #       echo ${TAG:1}
+      #       git remote get-url --all origin
+      #   env:
+      #     TAG: ${{ github.event.inputs.releaseTag }}
 
 
 

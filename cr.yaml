@@ -1,2 +1,2 @@
-release-name-template: "v{{ .Version }}"
+release-name-template: "{{ .Version }}"
 generate-release-notes: true

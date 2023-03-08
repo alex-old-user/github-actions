@@ -33,11 +33,9 @@ jobs:
         with:
           version: 3.11.1
     
-      - name: custom packaging
+      - name: helm package
         run: |
-          rm -rf .cr-release-packages
-          mkdir -p .cr-release-packages
-          helm package charts/aloha --app-version=${TAG} --version=${TAG} --destination .cr-release-packages 
+          helm package charts/aloha --app-version=$TAG --version=$TAG --destination .cr-release-packages 
         env:
           TAG: ${{ steps.version.outputs.version }}
           #TAG: ${{ github.event.inputs.releaseTag }}
@@ -55,12 +53,12 @@ jobs:
 
 
 
-      # - uses: helm/chart-releaser-action@v1.5.0
-      #   env:
-      #     CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      #   with:
-      #     skip_packaging: true
-      #     config: cr.yaml
+      - uses: helm/chart-releaser-action@v1.5.0
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          skip_packaging: true
+          config: cr.yaml
 
       # - name: Release
       #   uses: softprops/action-gh-release@v1

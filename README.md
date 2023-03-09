@@ -16,6 +16,10 @@
 - https://helm.sh/docs/howto/chart_releaser_action/
 
 ---
+https://stackoverflow.com/questions/71688092/how-to-get-the-title-of-a-pull-request-with-github-actions
+https://github.com/semantic-release/semantic-release
+https://github.com/helm/chart-testing-action
+---
 ---
 ---
 
@@ -35,6 +39,6 @@ https://artifacthub.io/packages/helm/csi-wekafs/csi-wekafsplugin
 artifacthub-repo.yml
 
 
-https://quay.io/ ?
-
-semver
+- https://quay.io/ ?
+- semver
+- use of sources

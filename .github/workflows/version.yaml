@@ -1,21 +1,38 @@
 name: version
 on:
-  pull_request:
+  push:
+    branches:
+      - main
+      - dev
 
 
 jobs:
   pr-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0                
 
       - name: Git Version
-        id: auto_version
+        id: version
         uses: codacy/git-version@2.7.1
         with:
           release-branch: main
           minor-identifier: /feat(ure)*:/
           major-identifier: /breaking:/
+
+      - name: Use the version
+        run: |
+          echo current ${{ steps.version.outputs.version }}
+          echo previous ${{ steps.version.outputs.previous-version }}
+
+          
+      - name: Update version
+        run: | 
+            cd charts/aloha
+            
+            yq -i '.version = "'$VERSION'"' Chart.yaml
+            yq -i '.appVersion = "'$VERSION'"' Chart.yaml
+        env:
+          VERSION: ${{ steps.version.outputs.version }}

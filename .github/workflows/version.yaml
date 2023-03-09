@@ -18,5 +18,6 @@ jobs:
         id: auto_version
         uses: codacy/git-version@2.7.1
         with:
+          release-branch: main
           minor-identifier: /feat(ure)*:/
           major-identifier: /breaking:/

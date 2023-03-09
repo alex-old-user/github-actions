@@ -42,3 +42,7 @@ artifacthub-repo.yml
 - https://quay.io/ ?
 - semver
 - use of sources
+
+- push
+    - old actions-js/push@master
+    - new https://github.com/stefanzweifel/git-auto-commit-action

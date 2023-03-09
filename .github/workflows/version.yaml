@@ -36,3 +36,8 @@ jobs:
             yq -i '.appVersion = "'$VERSION'"' Chart.yaml
         env:
           VERSION: ${{ steps.version.outputs.version }}
+
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Release ${{ steps.version.outputs.version }}

@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0   
       - run: |
           echo 1
-          echo ${{ input.makeLatestRelease }}
+          echo ${{ inputs.makeLatestRelease }}
           echo 2
 
       - name: Git Version

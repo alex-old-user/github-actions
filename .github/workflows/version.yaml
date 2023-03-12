@@ -4,6 +4,15 @@ on:
     branches:
       - main
       - dev
+  workflow_dispatch:
+    inputs:
+      releaseTag:
+        description: 'release tag'     
+        required: true
+      makeLatestRelease:
+        type: boolean
+        description: makeLatestRelease
+        required: true
 
 
 jobs:
@@ -12,7 +21,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0                
+          fetch-depth: 0   
+      - run: |
+          echo 1
+          echo ${{ input.makeLatestRelease }}
+          echo 2
 
       - name: Git Version
         id: version

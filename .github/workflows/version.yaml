@@ -26,6 +26,7 @@ jobs:
           echo 1
           echo ${{ inputs.makeLatestRelease }}
           echo 2
+          exit 1
 
       - name: Git Version
         id: version

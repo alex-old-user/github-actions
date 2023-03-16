@@ -121,4 +121,14 @@ entries:
     urls:
     - https://github.com/dontbreakit/github-actions/releases/download/aloha-1.2.5/aloha-1.2.5.tgz
     version: 1.2.5
-generated: "2023-03-08T20:20:58.073248599Z"
+  - apiVersion: v2
+    appVersion: 1.1.1
+    created: "2023-03-16T12:26:28.077772698Z"
+    description: A Helm chart for Kubernetes2
+    digest: 1357fc6e381131c3b2a5856d64558a47257ab38e1e01d609df98bbbcfb3749b7
+    name: aloha
+    type: application
+    urls:
+    - https://github.com/dontbreakit/github-actions/releases/download/1.1.1/aloha-1.1.1.tgz
+    version: 1.1.1
+generated: "2023-03-16T12:26:28.077800198Z"

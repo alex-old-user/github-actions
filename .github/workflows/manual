@@ -1,0 +1,81 @@
+name: 'CI'
+on: 
+  workflow_dispatch:
+    inputs:
+      releaseTag:
+        description: 'release tag'     
+        required: true
+      makeLatestRelease:
+        type: boolean
+        description: makeLatestRelease
+        required: true
+
+
+jobs:
+  release:
+    # if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.makeLatestRelease }}
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: get version
+        id: version
+        run: |
+          version=`yq .version charts/aloha/Chart.yaml`
+          echo $version
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+      # - name: Configure Git
+      #   run: |
+      #     git config user.name "$GITHUB_ACTOR"
+      #     git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      # - run: git log -5
+      # - name: Build Changelog
+      #   id: github_release
+      #   uses: mikepenz/release-changelog-builder-action@v3
+
+      - uses: azure/setup-helm@v3
+        with:
+          version: 3.11.1
+    
+      - name: helm package
+        run: |
+          helm-docs
+          helm package charts/aloha --app-version=$TAG --version=$TAG --destination .cr-release-packages 
+        env:
+          TAG: ${{ steps.version.outputs.version }}
+          #TAG: ${{ github.event.inputs.releaseTag }}
+
+      # - run: |
+      #       owner=$(cut -d '/' -f 1 <<< "$GITHUB_REPOSITORY")
+      #       repo=$(cut -d '/' -f 2 <<< "$GITHUB_REPOSITORY")
+      #       echo here
+      #       echo $owner
+      #       echo $repo
+      #       echo ${TAG:1}
+      #       git remote get-url --all origin
+      #   env:
+      #     TAG: ${{ github.event.inputs.releaseTag }}
+
+
+
+      - uses: helm/chart-releaser-action@v1.5.0
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          skip_packaging: true
+          config: cr.yaml
+          CR
+
+      # - name: Release
+      #   uses: softprops/action-gh-release@v1
+      #   # if: startsWith(github.ref, 'refs/tags/')
+      #   with:
+      #     draft: false
+      #     files: test
+      #     tag_name: ${{ github.event.inputs.releaseTag }}
+      #     generate_release_notes: true
+      #     #body: ${{steps.github_release.outputs.changelog}}
+
+

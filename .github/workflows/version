@@ -1,4 +1,4 @@
-name: get
+name: version
 on:
   push:
     branches:

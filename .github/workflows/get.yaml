@@ -42,7 +42,7 @@ jobs:
             echo HERE1 
             cat body
             echo HERE1
-            echo "body=`cat body`" >> "$GITHUB_OUTPUT"
+
 
       - uses: azure/setup-helm@v3
         with:

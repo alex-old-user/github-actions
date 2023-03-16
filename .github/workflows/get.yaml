@@ -57,10 +57,11 @@ jobs:
       - uses: helm/chart-releaser-action@v1.5.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          CR_RELEASE_NOTES_FILE: ${{ steps.set.outputs.body }}          
         with:
           skip_packaging: true
           config: cr.yaml
-          CR_RELEASE_NOTES_FILE: ${{ steps.set.outputs.body }}
+          
 
       # - name: Release
       #   uses: softprops/action-gh-release@v1

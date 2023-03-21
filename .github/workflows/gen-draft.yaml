@@ -13,6 +13,8 @@ jobs:
         with:
           fetch-depth: 0
       - run: gh release delete v1.33.0 --yes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get version
         id: version

@@ -13,8 +13,8 @@ on:
         description: I solemnly swear that the inputs are correct and I run the workflow from the correct branch! 
         type: choice
         options: 
-        - yes
-        - yes
+        - "yes"
+        - "yes, I do"
 
 
 jobs:

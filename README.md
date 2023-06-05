@@ -1,4 +1,4 @@
-
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/dontbreakit/github-actions/get.yaml?label=TESTS&style=flat-square)
 
 **releases**
 - archived, only realease https://github.com/actions/create-release
